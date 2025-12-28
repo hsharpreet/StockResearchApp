@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stock Researcher</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="preconnect"
+      href="https://fonts.googleapis.com"
+    />
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand">
+          <div class="logo">SR</div>
+          <div>
+            <p class="eyebrow">Passwordless</p>
+            <h1>Stock Researcher</h1>
+          </div>
+        </div>
+        <div class="session" id="session-state"></div>
+      </header>
+
+      <main>
+        <section class="card" id="auth-card">
+          <div class="auth-copy">
+            <p class="eyebrow">No signup — just log in</p>
+            <h2>Sign in with your email</h2>
+            <p>
+              Enter your email to receive a one-time passcode. We'll keep you signed in
+              with a secure session cookie so you can get back to your research quickly.
+            </p>
+          </div>
+          <form class="auth-form" id="login-form">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="you@example.com" required />
+            <button type="submit">Send code</button>
+            <p class="hint">A one-time code is printed to the server logs in this demo.</p>
+          </form>
+          <form class="auth-form hidden" id="verify-form">
+            <label for="code">Login code</label>
+            <input type="text" id="code" placeholder="123456" inputmode="numeric" />
+            <button type="submit">Verify &amp; continue</button>
+            <p class="hint">Codes expire after 10 minutes.</p>
+          </form>
+          <div class="status" id="auth-status"></div>
+        </section>
+
+        <section id="app-content" class="hidden">
+          <section class="card hero">
+            <div>
+              <p class="eyebrow">Daily intelligence</p>
+              <h2>Stock of the Day</h2>
+              <p class="hint">
+                We scan market movers, analyst chatter, and social signals. New research
+                lands here daily and stays pinned until you remove it.
+              </p>
+            </div>
+            <div class="search-row">
+              <div class="input-group">
+                <label for="ticker">Research another ticker</label>
+                <input id="ticker" list="ticker-options" autocomplete="off" placeholder="Type a ticker or company" />
+                <datalist id="ticker-options"></datalist>
+              </div>
+              <button id="research-button">Research</button>
+            </div>
+            <div class="status" id="research-status"></div>
+          </section>
+
+          <section id="tiles" class="tile-stack"></section>
+        </section>
+      </main>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
